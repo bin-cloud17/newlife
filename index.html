@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>새로운 삶 암기장</title>
+<style>
+:root{--bg:#faf8f4;--card:#fff;--tx:#222;--mu:#777;--ac:#2f6f5e;--ok:#2e7d32;--no:#c62828;--bd:#ddd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1d1c;--card:#262928;--tx:#eee;--mu:#9a9a9a;--ac:#6cc3a9;--ok:#81c784;--no:#ef9a9a;--bd:#3a3d3c}}
+:root[data-theme="dark"]{--bg:#1b1d1c;--card:#262928;--tx:#eee;--mu:#9a9a9a;--ac:#6cc3a9;--ok:#81c784;--no:#ef9a9a;--bd:#3a3d3c}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.7 -apple-system,"Noto Sans KR","Malgun Gothic",sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:4px 0 12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+button,select,input{font:inherit;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;padding:8px 12px}
+button{cursor:pointer}button.p{background:var(--ac);color:var(--bg);border-color:var(--ac)}button.on{border-color:var(--ac);color:var(--ac);font-weight:700}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;margin:12px 0}
+.no{color:var(--mu);font-size:14px}
+input.b{width:6.5em;margin:0 3px;padding:3px 8px;text-align:center}
+input.ok{border-color:var(--ok);color:var(--ok)}input.x{border-color:var(--no);color:var(--no)}
+.a{color:var(--ac);font-weight:700;border-bottom:2px solid var(--ac)}
+.bar{height:6px;background:var(--bd);border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+.msg{min-height:1.5em;margin:8px 0;font-weight:700}
+.li{padding:10px 0;border-bottom:1px solid var(--bd)}
+</style></head><body><main>
+<h1>📖 새로운 삶 13주차 암기장</h1>
+<div class="row"><button id="mq" class="on">퀴즈</button><button id="mr">읽기(정답표시)</button><button id="mx">O/X</button><button id="me">서술형</button><button id="mw">틀린 문제</button>
+<select id="sec"></select><button id="sh">섞기: 끔</button></div>
+<div class="bar"><i id="pg"></i></div><div class="no" id="st"></div>
+<div id="v"></div>
+</main>
+<script>
+const D=`1|새로운 삶 과정은 예수님을 알고 믿게 된 이후에도 _답게 살지 못하는 우리의 모습을 돌아보고 회복하는 과정이다.|자녀
+2|에베소서 1장 18절: 하나님의 슬픔은 믿지 않는 자들이 아니라 _을 받은 자들이 풍성함을 알지 못하는 데 있다.|상속
+3|새로운 삶의 정답은 “바른 _과 _”에 있다.|목적;가치관
+4|가치관은 ‘무엇이 귀한지 아닌지를 결정하는 _’이다.|관점
+5|프란시스 쉐퍼는 우리의 가치관을 “믿지 않을 때 주워 모은 _”이라고 표현했다.|쓰레기
+13|많은 사람들은 삶의 _을 스스로 찾으려고 한다. 이를 교재에서는 _라고 표현한다.|목적;추리
+14|전도서 1장 2절에서 전도자는 인간이 스스로 찾은 모든 삶의 목적에 대해 “_”라고 말했다.|헛되다
+15|하나님이 우리에게 주시는 삶의 _이 있다. 이를 _라고 한다.|목적;계시
+16|하나님은 우리를 _하셨다. 우리는 의미 없이 태어난 존재가 아니다.|계획
+17|삶의 목적을 바르게 알 때 우리는 _한 삶을 누릴 수 있다.|풍성
+18|하나님의 계획은 내가 하나님의 _이/가 되는 것이다.|자녀
+24|하나님이 우리에게 주신 목적은 _한 목적이다.|영원
+25|우리 안에는 _을 바라고 사모하는 본능이 있다.|영원
+26|하나님이 주신 삶의 목적은 _과 관련된다.|영원
+27|“_은 곧 유일하신 참 하나님과 그가 보내신 자 예수 그리스도를 _ 것이다.”(요 17:3)|영생;아는
+28|세상은 우리가 영원한 가치를 보지 못하도록 만든다. 이를 _의 왜곡이라 한다.|가치관
+29|사단은 “합당한 _을/를 _하라”고 말한다.|값;지불
+30|삶의 목적의 주체는 _이다.|하나님
+31|결론적으로 _한 가치를 사모하고, 잘못된 _를 바로잡아야 한다.|영원;가치관
+38|예배의 대상은 오직 _이다.|하나님
+39|우리의 첫 번째 목적은 _을 예배하는 것이다.|하나님
+40|예수님을 알기 전 사람들은 다른 것을 _한다.|예배
+41|우리는 수많은 다른 것들을 섬기고 따르며 _할 수 있으나, 진정한 목적은 _을 예배하는 것이다.|예배;하나님
+42|예배의 본질은 하나님과의 _이다.|관계
+43|예배는 ‘공예배 + _’이다.|삶의 예배
+49|인간의 죄는 하나님께 _하지 않으려는 데서 시작되었다.|항복
+50|“너희 눈이 밝아 _과 같이 되어”(창 3:5)|하나님
+51|항복은 대단한 사람들에게만 벌어지는 일이 아니라 모든 _들의 삶 전반에 걸쳐 일어날 수 있는 아름다운 _이다.|신자;예배
+52|항복은 일회적인 사건이 아니라 _이 오래 걸리는 일이며 _해야 하는 일이다.|시간;연습
+53|하나님과 인간의 최초의 예배는 ‘친밀한 _’이었다.|교제
+54|죄로 인해 그 교제는 _되었고 인간은 하나님의 _을 피하게 되었다(창 3:8).|단절;낯
+55|하나님은 선악과 사건 이후에도 끊임없이 사람과 _하기 원하셨다.|교제
+56|하나님은 _을 통해 우리와의 친밀한 교제를 회복하도록 하셨다.|예수님
+57|예배의 중심은 “신령과 _”이다(요 4:24).|진정
+65|‘새롭게 태어나다(Born again)’라는 뜻의 구원을 설명하는 단어는 _이다.|중생
+66|우리는 모두 영적 _ 상태였다.|사망
+67|“여러분도 전에는 허물과 죄로 _ 사람들입니다”(엡 2:1)|죽었던
+68|입양은 _스러운 일이다.|영광
+69|“진정 _하면 따르게 됩니다.”|사랑
+77|하나님은 우리가 _하도록 공동체를 보내 주셨다.|성숙
+78|하나님은 복을 흘려 보내는 _로 우리를 부르셨다.|통로
+79|예수님은 십자가로 하나님과 _시키셨다(엡 2:13, 16).|화해
+80|우리는 하나님의 _이다(엡 2:19).|가족
+81|초대교회는 성전 중심이 아니라 _에서 모이는 소그룹 공동체로 출발했다.|집
+82|목장은 ‘관리 중심’이 아니라 _ 중심 구조이다.|관계
+83|목장은 성경적이며 독립된 _이다.|교회
+84|목장은 교회의 기능인 예배, _, _, 선교, _을/를 담당할 수 있다.|교육;봉사;교제
+85|가족이란 _과 삶을 공유하는 공동체이다.|식탁
+86|가족은 싸우더라도 관계를 _하지 않는다.|포기
+87|사랑은 단지 _이 아니라 선택이고 결심이자 의지이다.|감정
+88|가정에는 반드시 사랑하며 섬기는 _가 존재한다.|부모
+97|우리의 세 번째 목적은 _입니다. 우리는 예수님 닮아가도록 창조되었습니다.|성숙
+98|하나님은 우리가 성숙하고 성장하여 하나님 _ 것을 기뻐하십니다.|닮아가는
+99|“모든 성경은 하나님의 영감으로 된 것으로서 교훈과 책망과 바르게 함과 의로 _하기에 유익합니다.”|교육
+100|고난은 우리를 힘들게 하지만 동시에 _하도록 돕습니다.|성장
+101|큐티를 통해 교회 안에서 _으로 나아가야 합니다.|교회밖
+102|큐티를 통해 기도원 영성에서 _으로 나아갈 수 있습니다.|골방영성
+103|큐티를 통해 목회자 _ 신앙에서 _ 신앙으로 나아갈 수 있습니다.|의존;스스로 서는
+104|하나님과 _을 가지게 하여 주셨습니다(고전 1:9)|사귐
+105|예수님을 _ 위해서 큐티를 해야 합니다.|닮아가기
+106|순전하고 신령한 _을 사모하라(벧전 2:2)|젖
+107|성령님의 _을 따라가기 위해서 큐티를 해야 합니다.|인도하심
+113|시간과 _을/를 구별해야 한다.|장소
+114|큐티의 적용과 실천은 추상적이지 않고 _이어야 한다.|구체적
+115|하나님을 _하는 인간의 모든 생각과 마음, 사고방식, 체계를 견고한 진이라고 합니다.|대적
+116|견고한 진의 원인에는 _ 결합, _ 숭배, 잘못된 가치관, 그리고 과거의 _ 등이 있습니다.|영혼;우상;상처
+117|견고한 진은 _과의 건강한 관계, 이웃과의 건강한 관계, _과의 건강한 관계를 방해합니다.|하나님;나 자신
+118|견고한 진 무너뜨리기 단계 중 가장 첫 번째는 _하는 것입니다.|발견
+119|“우리의 싸우는 무기는 육체에 속한 것이 아니요, 오직 하나님 앞에서 견고한 진을 파하는 _이다”(고후 10:4)|강력
+127|하나님이 부르신 섬김의 세 가지 장소는 _, _, _입니다.|가정;직장;교회
+128|진정 _하면 섬깁니다.|사랑
+129|SHAPE에서 S는 _이다.|영적은사 (Spiritual gifts)
+130|SHAPE에서 H는 _이다.|마음 (Heart)
+131|SHAPE에서 A는 _이다.|재능 (Abilities)
+132|SHAPE에서 P는 _이다.|성격 (Personality)
+133|SHAPE에서 E는 _이다.|경험 (Experiences)
+145|“이 사람들은 모두 믿음을 따라 살다가 죽었습니다… 이 땅에서 그들이 길손과 _임을 고백하였습니다”(히 11:13)|나그네
+146|이 세상은 먹음직도 하고, _도 합니다.|보암직
+147|“하나님의 선하시고 기뻐하시고 온전하신 뜻이 무엇인지 _하도록 하라”(롬 12:2)|분별
+148|“하나님은 이스라엘을 하나님 나라의 _로 부르셨다”|제사장
+149|하나님 나라의 의미는 공간이 아니라 _의 의미이다.|주권
+150|하나님 나라는 ‘_’ 왔으나 ‘_’ 오지 않았다.|이미;아직
+151|“아버지께서 나를 보내신 것 같이 나도 너희를 _”(요 20:21)|보내노라
+152|우리 모두의 선교지는 _의 자리입니다.|삶
+153|하나님을 드러내는 _로서의 삶을 살라.|대사
+154|우리는 그리스도의 전권 _입니다”(고후 5:20)|대사
+155|“우리가 믿는 것은 이제 당신의 _ 때문만은 아니오”(요 4:42)|말
+156|믿음은 _에서 나고, 사마리아 마을 부흥의 시작은 연약한 여인이 전한 _이었다(롬 10:17)|들음;말
+157|하나님은 전도의 _한 것으로 믿는 자들을 구원하시기를 기뻐하십니다.|미련
+167|그러므로 이제부터 여러분은 외국 사람이나 _가 아니요, 성도들과 함께 시민이며 하나님의 _입니다. … 그리스도 예수가 그 _이 되십니다. (엡 2:19-20)|나그네;가족;모퉁잇돌
+168|나는 확신합니다. _도, 삶도, _들도, 권세자들도, … 그 밖에 어떤 _도, 우리를 우리 주 예수 그리스도 안에 있는 하나님의 _에서 끊을 수 없습니다. (롬 8:38-39)|죽음;천사;피조물;사랑
+169|하나님은 _이십니다. _ 안에 있는 사람은 하나님 안에 있고 … 사랑이 우리에게서 _되었다는 사실은 … 심판 날에 _을 가지게 하려는 것입니다. (요일 4:16-17)|사랑;사랑;완성;담대함
+170|“참되게 예배를 드리는 사람들이 _과 _로 아버지께 예배를 드릴 때가 온다. … 아버지께서는 이렇게 예배를 드리는 사람들을 _신다.” (요 4:23)|영;진리;찾으
+171|말씀을 _ 사람이 되십시오. 그저 _만 하여 자신을 속이는 사람이 되지 마십시오. … 있는 그대로의 자기 얼굴을 _ 속으로 들여다보기만 하는 사람과 같습니다. (약 1:22-23)|행하는;듣기;거울
+172|갓난 아기들처럼 순전한 _의 젖을 _하십시오. 그래야 여러분은 젖으로 자라서 _에 이를 것입니다. (벧전 2:2-3)|말씀;사모;구원
+173|여러분은 조상으로부터 물려 받은 여러분의 _ 생활방식에서 _되었습니다. … 은이나 금과 같은 _ 것으로 된 것이 아니라, 흠이 없고 티가 없는 _의 피와 같은 그리스도의 귀한 피로 되었습니다. (벧전 1:18)|헛된;해방;썩어질;어린양
+174|한 몸에 많은 _가 있으나, … 우리도 여럿이지만 그리스도 안에서 _을 이루고 있으며, 각 사람은 서로 _입니다. (롬 12:4-5)|지체;한몸;지체
+175|“이제 나는 너희에게 _ 계명을 준다. 서로 _하여라. … 모든 사람이 그것으로 너희가 내 _인 줄을 알게 될 것이다.” (요 13:34-35)|새;사랑;제자
+176|우리의 싸움은 _을 적대자로 상대하는 것이 아니라, _와 권세자들과 이 어두운 세계의 지배자들과 하늘에 있는 악한 영들을 상대로 하는 것입니다. (엡 6:12)|인간;통치자
+177|나는 이것을 이미 _ 것도 아니며, 이미 목표점에 _ 것도 아닙니다. … 그리스도 예수께서 나를 사로잡으셨으므로, 나는 그것을 붙들려고 좇아가고 있습니다. (빌 3:12)|얻은;다다른`;
+const S=[[1,'1 가치관'],[13,'2 삶의 목적'],[38,'3 예배'],[49,'4 항복·교제'],[65,'5 거듭남'],[77,'6 공동체·가족'],[97,'7 성숙·큐티'],[113,'8 견고한 진'],[127,'9 섬김·SHAPE'],[145,'10 사명·말씀구절']];
+const sc=n=>{let r=S[0][1];for(const[a,b]of S)if(n>=a)r=b;return r};
+const Q=D.split('\n').map(l=>{const[n,t,a]=l.split('|');return{n:+n,t,a:a.split(';'),s:sc(+n)}});
+const OX=`6|새로운 삶 과정에서는 상처를 덮어두고 현재의 삶에 집중하는 것이 목적이다.|X
+7|하나님이 주신 상속의 의미를 ‘천국행 티켓’ 정도로만 여기는 것은 풍성한 삶을 누리는 모습이다.|X
+8|새로운 삶을 위해서는 과거의 잘못된 가치관을 버리고 바른 가치관을 세우는 과정이 필요하다.|O
+9|가치관은 내가 누구인지와는 큰 관련이 없다.|X
+10|믿는 자도 옛사람의 가치관을 그대로 가지고 살아갈 수 있다.|X
+19|삶의 목적을 스스로 ‘추리’하는 것은 확실하고 변하지 않는 방법이다.|X
+20|하나님이 주시는 삶의 목적은 말씀(계시)을 통해 알 수 있다.|O
+21|삶의 목적을 바로 알면 풍성한 삶을 누릴 수 있다.|O
+22|하나님은 사람을 아무런 이유 없이 우연히 창조하셨다.|X
+32|하나님이 주신 목적은 일시적이며 시대에 따라 변할 수 있다.|X
+33|사람은 본능적으로 영원을 사모하는 마음을 가지고 있다.|O
+34|영생은 죽은 후 천국에 가는 것만을 의미한다.|X
+35|세상에서 귀하게 여기는 것들은 모두 영원한 가치가 있다.|X
+36|사단은 최선의 것을 주지만 최악의 결과는 숨긴다.|O
+37|삶의 목적의 주체는 하나님이다.|O
+44|모든 사람은 의식적으로든 무의식적으로든 무언가를 예배하며 살아간다.|O
+45|예배의 본질은 형식과 의식에 있다.|X
+46|예배는 공예배만을 의미한다.|X
+47|삶 속의 작은 순간들도 하나님을 향한 예배가 될 수 있다.|O
+48|하나님은 형식적인 제사보다 사랑과 관계를 원하신다.|O
+58|항복은 단 한 번의 결단으로 완성된다.|X
+59|하나님과의 최초 예배는 친밀한 교제였다.|O
+60|예수님으로 인해 우리는 언제든 하나님과 교제할 수 있다.|O
+61|예배의 본질은 의식과 형식보다 마음과 관계에 있다.|O
+70|거듭남은 사람이 노력해서 얻을 수 있는 영적 성취이다.|X
+71|영적으로 죽은 상태에서도 우리는 스스로 하나님께 나아갈 수 있다.|X
+72|거듭남은 수리가 아니라 새 창조이다.|O
+73|하나님의 자녀는 그분을 ‘아바 아버지’라 부를 수 있다.|O
+74|유산은 노력한 대가로 받는 품삯이다.|X
+75|구원의 완성은 하나님과의 친밀한 사랑의 사귐이다.|O
+76|진정 하나님을 사랑하면 죄를 미워하게 된다.|O
+89|하나님은 사람을 공동체로 부르셨으나, 혼자 신앙생활하는 것도 충분히 완전하다.|X
+90|하나님의 복은 나 혼자만 누리라고 주신 것이다.|X
+91|예수님의 구원 사역은 하나님과의 관계뿐 아니라 사람과의 관계도 회복한다.|O
+92|교회는 단순한 건물이나 모임이 아니라 하나님의 형상을 반영하는 공동체다.|O
+93|목장은 기능 중심의 모임이므로 관계는 중요하지 않다.|X
+94|사랑은 감정이 아니라 선택과 결단이다.|O
+95|영적 부모는 특별한 능력을 가진 사람만 될 수 있다.|X
+108|성숙은 예수님을 닮아가는 과정이다.|O
+109|성경은 주로 우리의 감정을 위로하는 데 목적이 있다.|X
+110|성숙은 단기간에 빠르게 이루어진다.|X
+111|QT는 믿음이 성숙한 사람만 할 수 있다.|X
+112|성경은 삶의 가치관과 방향을 변화시킨다.|O
+120|QT는 하나님과의 교제, 성숙, 성령님의 인도하심을 위해 한다.|O
+121|큐티 시간과 장소는 매번 가능한 시간과 장소를 정하는 것이 가장 좋다.|O
+122|성경은 사람 중심보다 하나님 중심으로 읽어야 한다.|O
+123|적용의 중요한 본질은 행동 적용보다 내면 적용이 우선이다.|O
+124|견고한 진의 원인에는 영혼 결합, 우상숭배, 잘못된 가치관, 과거의 상처 등이 있다.|O
+125|견고한 진은 하나님과의 관계뿐 아니라 이웃, 자신과의 관계도 방해한다.|O
+126|견고한 진을 무너뜨리기 위해서는 발견, 결심, 용서, 공격의 단계를 거친다.|O
+134|하나님은 나를 단지 나 자신만을 위해 살도록 부르셨다.|X
+135|모든 신자는 사역자다.|O
+136|사랑은 감정만이 아니라 행동과 헌신을 포함한다.|O
+137|은사는 내가 원하면 선택할 수 있다.|X
+138|은사의 목적은 공동체를 세우고 유익하게 하는 것이다.|O
+139|마음의 열정은 하나님이 주신 소명과 연결될 수 있다.|O
+140|재능은 반드시 교회 안에서만 사용해야 한다.|X
+141|경험은 나의 섬김과 사역에 아무런 영향을 주지 않는다.|X
+158|이 세상은 우리의 영원한 고향이다.|X
+159|하나님 나라는 지리적·공간적 의미보다 주권적 의미이다.|O
+160|하나님 나라는 이미 왔고, 동시에 아직 완성되지 않았다.|O
+161|모든 그리스도인은 하나님의 대사다.|O
+162|선교지는 반드시 해외여야 한다.|X
+163|평범한 일상 속에서도 우리는 하나님을 드러낼 수 있다.|O
+164|하나님은 우리의 완벽함을 보고 사명자로 부르신다.|X
+165|하나님의 식탁은 회복과 생명의 상징이다.|O`.split('\n').map(l=>{const[n,t,a]=l.split('|');return{n:+n,t,a,s:sc(+n),ox:1}});
+const ES=`11|에베소서 1장 18절이 말하는 하나님의 슬픔의 이유를 설명해 보세요.
+12|자신의 삶에서 과거에 가장 중요하게 생각했던 가치 2가지를 적고, 그것을 위해 지불했던 대가를 간단히 써 보세요.
+23|삶의 목적을 파악하는 두 가지 방법을 적어 주세요.
+62|하나님과 교제를 회복할 수 있게 된 이유를 간단하게 적어 보세요.
+63|‘신령’과 ‘진정’으로 드리는 예배가 무엇인지 간단히 적어 보세요.
+64|당신의 영성 색깔과, 그렇게 생각하는 이유를 간단하게 적어 보세요.
+96|하나님이 사람을 공동체로 창조하신 이유를 설명하세요.
+142|SHAPE의 다섯 가지 요소 중 세 가지를 쓰고 간단히 설명하세요.
+143|SHAPE의 다섯 가지 요소 중 당신에게 가장 와 닿았던 것을 나눠주세요.
+144|영적은사의 가장 주요한 목적을 말해 주세요.
+166|‘이 세상은 내 고향이 아니다’라는 말의 의미를 설명하세요.`.split('\n').map(l=>{const[n,t]=l.split('|');return{n:+n,t,s:sc(+n)}});
+let EA={};try{EA=JSON.parse(localStorage.getItem('ss_e')||'{}')}catch(e){}
+function ox(q){V.innerHTML=`<div class="card"><div class="no">${q.s} · ${q.n}번</div><div>${q.t}</div><div class="msg" id="m"></div><div class="row"><button class="p" id="bo">O</button><button class="p" id="bx">X</button><button id="pv">‹ 이전</button><button id="nx">다음 ›</button></div></div>`;
+ const nx=()=>{i++;render()};$('nx').onclick=nx;$('pv').onclick=()=>{i=Math.max(0,i-1);render()};
+ [['bo','O'],['bx','X']].forEach(([id,v])=>$(id).onclick=()=>{const g=v==q.a;$('m').textContent=g?'⭕ 정답!':'❌ 오답 — 정답은 '+q.a;$('m').style.color=g?'var(--ok)':'var(--no)';
+  if(g){W.delete(q.n);sv();if(mode=='w'){list.splice(i,1);setTimeout(render,700)}else setTimeout(nx,700)}else{W.add(q.n);sv()}})}
+function essay(){V.innerHTML=list.map(q=>`<div class="card"><div class="no">${q.s} · ${q.n}번</div><div>${q.t}</div><textarea data-n="${q.n}" rows="4" style="width:100%;margin-top:8px;box-sizing:border-box;font:inherit;border:1px solid var(--bd);border-radius:10px;padding:8px;background:var(--bg);color:var(--tx)" placeholder="내 생각을 적어 보세요 (자동 저장)">${(EA[q.n]||'').replace(/</g,'&lt;')}</textarea></div>`).join('');
+ V.querySelectorAll('textarea').forEach(t=>t.oninput=()=>{EA[t.dataset.n]=t.value;try{localStorage.setItem('ss_e',JSON.stringify(EA))}catch(e){}})}
+let mode='q',sec='all',shuf=false,i=0,list=[],W,fx={};
+try{W=new Set(JSON.parse(localStorage.getItem('ss_w')||'[]'))}catch(e){W=new Set}
+const sv=()=>{try{localStorage.setItem('ss_w',JSON.stringify([...W]))}catch(e){}};
+const $=id=>document.getElementById(id),V=$('v');
+const sel=$('sec');sel.innerHTML='<option value="all">전체 ('+Q.length+'문제)</option>'+S.map(s=>`<option>${s[1]}</option>`).join('');
+const norm=s=>s.replace(/\s|\(.*\)/g,'').toLowerCase();
+function build(){const pool=mode=='x'?OX:mode=='e'?ES:mode=='w'?Q.concat(OX):Q;list=pool.filter(q=>(sec=='all'||q.s==sec)&&(mode!='w'||W.has(q.n)));if(mode=='w')list.sort((a,b)=>a.n-b.n);if(shuf)list.sort(()=>Math.random()-.5);i=0;render()}
+function blanks(q,fill){let k=0;return q.t.replace(/_/g,()=>{const a=q.a[k++]||'';return fill?`<span class="a">${a}</span>`:`<input class="b" data-k="${k-1}" autocomplete="off" size="${Math.max(a.length,3)}">`})}
+function render(){
+ $('st').textContent=`${list.length?(mode=='r'?list.length:Math.min(i+1,list.length)+' / '+list.length):'0'} · 틀린 문제 ${W.size}개 저장됨`;
+ $('pg').style.width=(list.length&&mode!='r'?(i/list.length*100):0)+'%';
+ if(mode=='e'&&list.length){essay();return}
+ if(!list.length){V.innerHTML='<div class="card">문제가 없습니다.'+(mode=='w'?' 아직 틀린 문제가 없어요 👏':'')+'</div>';return}
+ if(mode=='r'){V.innerHTML=list.map(q=>`<div class="li"><span class="no">${q.n}.</span> ${blanks(q,1)}</div>`).join('');return}
+ if(i>=list.length){V.innerHTML=`<div class="card">🎉 끝! 틀린 문제 ${W.size}개는 ‘틀린 문제’ 탭에서 복습하세요.</div><button class="p" onclick="build()">처음부터</button>`;return}
+ const q=list[i];if(q.ox)return ox(q);
+ V.innerHTML=`<div class="card"><div class="no">${q.s} · ${q.n}번</div><div>${blanks(q,0)}</div><div class="msg" id="m"></div>
+ <div class="row"><button class="p" id="ck">확인</button><button id="sa">정답 보기</button><button id="nx">다음 ›</button><button id="pv">‹ 이전</button></div></div>`;
+ const ins=[...V.querySelectorAll('input')];ins[0]&&ins[0].focus();
+ const next=()=>{i++;render()};
+ $('nx').onclick=next;$('pv').onclick=()=>{i=Math.max(0,i-1);render()};
+ $('ck').onclick=()=>{let ok=1;ins.forEach(e=>{const g=norm(e.value)==norm(q.a[+e.dataset.k]);e.className='b '+(g?'ok':'x');if(!g)ok=0});
+  $('m').textContent=ok?'⭕ 정답!':'❌ 다시 시도해 보세요';$('m').style.color=ok?'var(--ok)':'var(--no)';
+  if(ok){W.delete(q.n);sv();if(mode=='w'){list.splice(i,1);setTimeout(render,600)}else setTimeout(next,700)}else{W.add(q.n);sv()}};
+ $('sa').onclick=()=>{ins.forEach(e=>{e.value=q.a[+e.dataset.k];e.className='b ok'});W.add(q.n);sv();$('m').textContent='정답을 확인했어요. 틀린 문제에 저장됨';$('m').style.color='var(--mu)'};
+ ins.forEach((e,k)=>e.onkeydown=ev=>{if(ev.key=='Enter'){k<ins.length-1?ins[k+1].focus():$('ck').click()}});
+}
+[['mq','q'],['mr','r'],['mx','x'],['me','e'],['mw','w']].forEach(([id,m])=>$(id).onclick=()=>{mode=m;['mq','mr','mx','me','mw'].forEach(x=>$(x).className=x==id?'on':'');build()});
+sel.onchange=()=>{sec=sel.value;build()};
+$('sh').onclick=()=>{shuf=!shuf;$('sh').textContent='섞기: '+(shuf?'켬':'끔');$('sh').className=shuf?'on':'';build()};
+build();
+</script></body></html>
